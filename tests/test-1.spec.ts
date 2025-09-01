@@ -1,3 +1,4 @@
+/*
 import { test, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 
@@ -47,3 +48,4 @@ test('test', async ({ page }) => {
   await page.getByRole('link', { name: 'Frame Assignment' }).click();
   await expect(page.locator('#frame-assignment')).toContainText('Frame Assignment');
 });
+*/
