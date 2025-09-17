@@ -1,8 +1,6 @@
-/*
 import { test } from '@playwright/test';
 import { faker } from '@faker-js/faker';
-import { LoginPage } from '../pages/login.page';
-import { CustomerPage, Projectpage, ProcessPage } from '../pages'; 
+import { LoginPage, CustomerPage, Projectpage, ProcessPage } from '../pages'; 
 // import 'dotenv/config';
 
 test('login + create customer/project/process flow', async ({ page }) => {
@@ -25,14 +23,13 @@ test('login + create customer/project/process flow', async ({ page }) => {
   await login.open();                   // uses baseURL from config
   await login.signIn(email, password);  // pass env creds
 
-  await app.createCustomer(customerName, 'Sample Desc');
-  await app.goToProjectsTab();
-  await app.createProject(projectName, customerName);
-  await app.filterByProject(projectName);
-  await app.goToProcessesTab();
-  await app.createProcess(processName);
-  await app.selectProcessInProject(processName);
-  await app.expectSidebarHas(projectName, processName);
-  await app.openFrameAssignmentAndExpect();
+  await customerPage.createCustomer(customerName, 'Sample Desc');
+  await projectPage.goToProjectsTab();
+  await projectPage.createProject(projectName, customerName);
+  await projectPage.filterByProject(projectName);
+  await processPage.goToProcessesTab();
+  await processPage.createProcess(processName);
+  await processPage.selectProcessInProject(processName);
+  await processPage.expectSidebarHas(projectName, processName);
+  await processPage.openFrameAssignmentAndExpect();
 });
-*/

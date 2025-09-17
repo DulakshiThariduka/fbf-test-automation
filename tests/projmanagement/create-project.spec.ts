@@ -1,3 +1,4 @@
+/*
 import { test } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { LoginPage, CustomerPage, Projectpage} from '../../pages'; 
@@ -26,3 +27,4 @@ test('login + create project flow', async ({ page }) => {
   await projectPage.createProject(projectName, customerName);
   await projectPage.filterByProject(projectName);
 });
+*/

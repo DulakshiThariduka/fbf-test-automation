@@ -1,3 +1,4 @@
+/*
 import { test } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { LoginPage, CustomerPage, Projectpage, ProcessPage } from '../../pages'; 
@@ -27,3 +28,4 @@ test('login + create customer/project/process flow', async ({ page }) => {
   await processPage.expectSidebarHas(projectName, processName);
   await processPage.openFrameAssignmentAndExpect();
 });
+*/

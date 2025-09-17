@@ -1,3 +1,4 @@
+/*
 import { test } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { LoginPage, CustomerPage} from '../../pages'; 
@@ -20,3 +21,4 @@ test('login + create customer flow', async ({ page }) => {
 
   await customerPage.createCustomer(customerName, 'Sample Desc');
 });
+*/
