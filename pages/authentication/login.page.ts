@@ -1,4 +1,3 @@
-// pages/authentication/login.page.ts
 import { Page, expect } from '@playwright/test';
 
 export class LoginPage {
@@ -7,7 +6,6 @@ export class LoginPage {
   async open() {
     const url = this.baseURL ? this.baseURL + "/" : "/";
     await this.page.goto(url);
-    // Wait for page to load
     await this.page.waitForLoadState('networkidle');
   }
 
@@ -15,11 +13,8 @@ export class LoginPage {
     await this.page.getByTestId('stBaseButton-secondary').click();
     await this.page.getByRole('textbox', { name: 'Enter your email, phone, or' }).fill(email);
     await this.page.getByRole('button', { name: 'Next' }).click();
-    
-    // Wait for password field to appear
     await this.page.getByRole('textbox', { name: /Enter the password/i }).waitFor();
     await this.page.getByRole('textbox', { name: /Enter the password/i }).fill(password);
-    
     await this.page.getByRole('button', { name: 'Sign in' }).click();
     await this.page.getByRole('button', { name: 'Yes' }).click();
     

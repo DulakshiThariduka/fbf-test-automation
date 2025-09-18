@@ -1,4 +1,3 @@
-// setup/global-setup.ts (alternative approach)
 import { chromium, FullConfig } from '@playwright/test';
 import { LoginPage } from '../pages/authentication/login.page';
 
@@ -23,17 +22,10 @@ async function globalSetup(config: FullConfig) {
   const loginPage = new LoginPage(page);
   
   try {
-    // Navigate directly using absolute URL first
     await page.goto(baseURL as string);
     await page.waitForLoadState('networkidle');
-    
-    // Then use your LoginPage methods
     await loginPage.signIn(email, password);
-    
-    // Wait for successful login
     await page.waitForTimeout(3000);
-    
-    // Save storage state
     await context.storageState({ path: storageState as string });
     
     console.log('Authentication successful. Storage state saved.');
