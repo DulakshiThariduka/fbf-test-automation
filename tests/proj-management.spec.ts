@@ -17,6 +17,7 @@ test.beforeEach(async ({ page }) => {
 
 test('Create Customer', async ({ page }) => {
   const customerPage = new CustomerPage(page);
+  await customerPage.goToCustomersTab();
   await customerPage.createCustomer(customerName, 'Sample Desc');
 });
 
@@ -47,11 +48,3 @@ test('Verify Created Process and Project', async ({ page }) => {
   await processPage.expectSidebarHas(projectName, processName);
   await processPage.openFrameAssignmentAndExpect();
 });
-
-
-
-
-
-
-
-

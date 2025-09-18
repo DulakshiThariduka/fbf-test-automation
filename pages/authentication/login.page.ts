@@ -1,12 +1,10 @@
 import { Page, expect } from '@playwright/test';
 
 export class LoginPage {
-  constructor(private readonly page: Page, private readonly baseURL?: string) {}
+  constructor(private readonly page: Page) {}
 
   async open() {
-    const url = this.baseURL ? this.baseURL + "/" : "/";
-    await this.page.goto(url);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.goto("/");
   }
 
   async signIn(email: string, password: string) {
@@ -17,6 +15,5 @@ export class LoginPage {
     await this.page.getByRole('textbox', { name: /Enter the password/i }).fill(password);
     await this.page.getByRole('button', { name: 'Sign in' }).click();
     await this.page.getByRole('button', { name: 'Yes' }).click();
-    
   }
 }

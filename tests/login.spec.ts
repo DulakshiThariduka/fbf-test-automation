@@ -5,5 +5,7 @@ test('test with authenticated user', async ({ page }) => {
   await page.goto('/');
   
   // Your test assertions here
-  await expect(page).toHaveURL('/');
+  await expect(page).toHaveURL('/');  
+  await expect(page.getByTestId('stBaseButton-secondary')).toBeVisible();
+  await page.expectedloggedIn();
 });

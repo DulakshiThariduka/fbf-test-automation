@@ -25,7 +25,6 @@ async function globalSetup(config: FullConfig) {
     await page.goto(baseURL as string);
     await page.waitForLoadState('networkidle');
     await loginPage.signIn(email, password);
-    await page.waitForTimeout(3000);
     await context.storageState({ path: storageState as string });
     
     console.log('Authentication successful. Storage state saved.');
