@@ -1,6 +1,6 @@
 import { expect, Page } from '@playwright/test';
 
-export class Projectpage {
+export class ProjectPage {
   constructor(private readonly page: Page) {}
 
   async goToProjectsTab() {

@@ -12,8 +12,10 @@ export default defineConfig({
   reporter: 'html',
   use: {
     baseURL: process.env.BASE_URL,
+    storageState: 'storageState.json',
     trace: 'on-first-retry',
   },
+  globalSetup: require.resolve('./setup/global-setup'),
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
     // add these back if you install them:
