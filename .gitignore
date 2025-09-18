@@ -6,3 +6,7 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /storageState.json/
+/.env
+/playwright
+/evidence/
+/setup-auth-failure.png

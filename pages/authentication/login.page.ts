@@ -1,19 +1,27 @@
-// pages/login.page.ts
-import { Page } from '@playwright/test';
+// pages/authentication/login.page.ts
+import { Page, expect } from '@playwright/test';
 
 export class LoginPage {
-  constructor(private readonly page: Page) {}
+  constructor(private readonly page: Page, private readonly baseURL?: string) {}
 
   async open() {
-    await this.page.goto("https://fbf-frame-management-dev.innerspace.at"); // absolute URL
+    const url = this.baseURL ? this.baseURL + "/" : "/";
+    await this.page.goto(url);
+    // Wait for page to load
+    await this.page.waitForLoadState('networkidle');
   }
 
   async signIn(email: string, password: string) {
     await this.page.getByTestId('stBaseButton-secondary').click();
     await this.page.getByRole('textbox', { name: 'Enter your email, phone, or' }).fill(email);
     await this.page.getByRole('button', { name: 'Next' }).click();
+    
+    // Wait for password field to appear
+    await this.page.getByRole('textbox', { name: /Enter the password/i }).waitFor();
     await this.page.getByRole('textbox', { name: /Enter the password/i }).fill(password);
+    
     await this.page.getByRole('button', { name: 'Sign in' }).click();
     await this.page.getByRole('button', { name: 'Yes' }).click();
+    
   }
 }

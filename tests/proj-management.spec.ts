@@ -9,6 +9,18 @@ const customerName = faker.company.name();
 const projectName  = faker.commerce.productName();
 const processName  = `${faker.word.noun()}-${faker.number.int(999)}`;
 
+/*test.beforeEach(async ({ page }) => {
+  // Verify we're on an authenticated page
+  console.log('Current URL:', page.url());
+  
+  // Check if we have authentication cookies
+  const cookies = await page.context().cookies();
+  console.log('Number of cookies:', cookies.length);
+  
+  // You can also check for specific auth indicators
+  await page.goto('/'); // Or your app's main page
+});*/
+
 test('Create Customer', async ({ page }) => {
   const customerPage = new CustomerPage(page);
   await customerPage.createCustomer(customerName, 'Sample Desc');
