@@ -1,23 +1,29 @@
+import { defineConfig, devices } from '@playwright/test';
 import * as dotenv from 'dotenv';
+
 dotenv.config();
 
-import { defineConfig, devices } from '@playwright/test';
-
 export default defineConfig({
-  testDir: './tests',
-  fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  globalSetup: './setup/global-setup.ts',
+  
   use: {
     baseURL: process.env.BASE_URL,
-    trace: 'on-first-retry',
+    storageState: 'playwright/.auth/user.json',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
   },
+  
   projects: [
-    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-    // add these back if you install them:
-    // { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
-    // { name: 'webkit',  use: { ...devices['Desktop Safari'] } },
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    // Add other browsers if needed
   ],
+  
+  timeout: 30000,
+  
+  expect: {
+    timeout: 5000,
+  },
 });

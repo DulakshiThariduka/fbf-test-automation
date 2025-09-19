@@ -1,14 +1,9 @@
-import 'dotenv/config';
-import { test } from '@playwright/test';
-import { LoginPage } from '../pages/login.page';
+import { test, expect } from '@playwright/test';
 
-test('user can log in', async ({ page }) => {
-  const email = process.env.USER_EMAIL;
-  const password = process.env.USER_PASSWORD;
-  if (!email || !password) throw new Error('Missing USER_EMAIL or USER_PASSWORD in .env');
-
-  const login = new LoginPage(page);
-  await login.open();                 // uses baseURL from config
-  await login.signIn(email, password);
-  //await expect(page.getByTestId('stText').locator('div')).toContainText(email);
+test('test with authenticated user', async ({ page }) => {
+  // You're already logged in from global setup!
+  await page.goto('/');
+  
+  // Your test assertions here
+  await expect(page).toHaveURL('/');  
 });
