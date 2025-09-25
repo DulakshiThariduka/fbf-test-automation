@@ -24,7 +24,6 @@ test.beforeAll(async ({ browser }) => {
 
 test('Create Customer', async () => {
   const customerPage = new CustomerPage(page);
-  //await customerPage.goToCustomersTab();
   await customerPage.createCustomer(customerName, 'Sample Desc');
 });
 
