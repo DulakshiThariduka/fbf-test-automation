@@ -5,10 +5,12 @@ dotenv.config();
 
 export default defineConfig({
   //globalSetup: './setup/global-setup.ts',
+  testDir: './tests',
+  testMatch: ['**/*.spec.ts'],
   
   use: {
     baseURL: process.env.BASE_URL,
-    storageState: 'playwright/.auth/user.json',
+    //storageState: 'playwright/.auth/user.json',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },
