@@ -1,3 +1,4 @@
+/*
 import { chromium, FullConfig } from '@playwright/test';
 import { LoginPage } from '../pages/authentication/login.page';
 
@@ -37,4 +38,4 @@ async function globalSetup(config: FullConfig) {
   }
 }
 
-export default globalSetup;
+export default globalSetup;*/
