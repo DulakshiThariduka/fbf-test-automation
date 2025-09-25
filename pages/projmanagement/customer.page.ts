@@ -3,9 +3,9 @@ import { expect, Page } from '@playwright/test';
 export class CustomerPage {
   constructor(private readonly page: Page) {}
 
-  async goToCustomersTab() {
+  /*async goToCustomersTab() {
     await this.page.getByTestId('stBaseButton-secondary').click();
-  }
+  }*/
 
   async createCustomer(customerName: string, description: string) {
     await this.page.getByRole('button', { name: 'add_circle_outline Create' }).click();
