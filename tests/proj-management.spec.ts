@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 import { faker } from '@faker-js/faker';
-import { CustomerPage, ProjectPage, ProcessPage } from '../pages'; 
+import { LoginPage, CustomerPage, ProjectPage, ProcessPage } from '../pages'; 
 
 test.describe.configure({ mode: 'serial' });
 
@@ -8,11 +8,16 @@ const customerName = faker.company.name();
 const projectName  = faker.commerce.productName();
 const processName  = `${faker.word.noun()}-${faker.number.int(999)}`;
 
-test.beforeEach(async ({ page }) => {
-  console.log('Current URL:', page.url());
-  const cookies = await page.context().cookies();
-  console.log('Number of cookies:', cookies.length);
-  await page.goto('/');
+test('Login and Navigate', async ({ page }) => {
+  const email = process.env.USER_EMAIL;
+  const password = process.env.USER_PASSWORD;
+  if (!email || !password) {
+    throw new Error('Missing USER_EMAIL or USER_PASSWORD in .env');
+  }
+  const login = new LoginPage(page);
+  await login.open();
+  await login.signIn(email, password);
+  //await login.expectLoggedIn();
 });
 
 test('Create Customer', async ({ page }) => {

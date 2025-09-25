@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 export default defineConfig({
-  globalSetup: './setup/global-setup.ts',
+  //globalSetup: './setup/global-setup.ts',
   
   use: {
     baseURL: process.env.BASE_URL,
